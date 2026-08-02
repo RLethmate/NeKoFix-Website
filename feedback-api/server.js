@@ -16,7 +16,12 @@ if (!GMAIL_USER || !GMAIL_APP_PASSWORD) {
 }
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  // Explizit Port 587 (STARTTLS) statt der "service: 'gmail'"-Kurzform, die auf den
+  // bei vielen Cloud-Hostern (auch hier) blockierten Port 465 (SMTPS) zurückfällt.
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  requireTLS: true,
   auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
 });
 
