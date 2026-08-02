@@ -13,7 +13,7 @@ export default function FAQ() {
     },
     {
       question: "Was passiert, wenn ich während des Jahres eine weitere Wohnung verwalte?",
-      answer: "Da die App komplett lokal läuft, kannst du jederzeit neue Wohnungen und Objekte hinzufügen – während der Erprobungsphase bis Ende September ohne Begrenzung bei der Anzahl. Danach erwirbst du für die nächste Abrechnung unkompliziert einen einmaligen Lizenzschlüssel."
+      answer: "Da die App komplett lokal läuft, kannst du deinem Objekt jederzeit neue Wohnungen hinzufügen – während der Erprobungsphase bis Ende September ohne Begrenzung bei der Anzahl der Einheiten (die kostenlose Beta gilt für ein Objekt). Danach erwirbst du für die nächste Abrechnung unkompliziert einen einmaligen Lizenzschlüssel."
     },
     {
       question: "Benötige ich für das Tool eine ständige Internetverbindung?",

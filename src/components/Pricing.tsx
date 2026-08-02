@@ -116,6 +116,9 @@ export default function Pricing() {
                     <Check className="w-5 h-5 text-brand-primary shrink-0" strokeWidth={2.5} />
                     <span className="font-semibold text-brand-secondary">Lokale DSGVO-Sicherheit</span>
                   </div>
+                  <div className="text-xs text-brand-ink/50 pl-8">
+                    Gilt für ein Objekt (Gebäude) mit beliebig vielen Einheiten.
+                  </div>
                 </div>
 
                 {/* Urgency Widget */}
