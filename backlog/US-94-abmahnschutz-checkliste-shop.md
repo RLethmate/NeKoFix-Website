@@ -70,6 +70,13 @@ Record vs. Stripe), die Seite sollte sich also noch nicht auf einen Anbieter fes
 - [ ] Vierteljährlicher bzw. release-begleitender Kurz-Check: Cookie-Einsatz, Datenschutz-
       erklärung, Sub-Auftragsverarbeiter-Liste, SSL-Zertifikat, Rechtstexte-Links weiterhin
       korrekt und aktuell.
+- [ ] **Barrierefreiheitsstärkungsgesetz (BFSG) im Blick behalten:** Geprüft (2026-08-02) —
+      BFSG gilt seit 28.06.2025 u. a. für E-Commerce-/SaaS-Dienstleistungen, es gibt aber eine
+      Kleinstunternehmen-Ausnahme für Dienstleistungen (< 10 Beschäftigte **und** ≤ 2 Mio. €
+      Jahresumsatz/-bilanzsumme). Als Einzelunternehmer erfüllt Ralf diese Ausnahme aktuell klar
+      — Website/Tool müssen derzeit nicht BFSG-barrierefrei sein. Kein akuter Handlungsbedarf,
+      aber bei Wachstum über die Schwellenwerte neu bewerten. Keine Rechtsberatung, nur
+      Ersteinschätzung.
 
 ## Bewertung der Einzelpunkte (Perplexity-Checkliste vs. Ist-Stand)
 

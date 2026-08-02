@@ -1,10 +1,13 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { Check, Send, ShieldCheck, Ticket, KeyRound } from "lucide-react";
 
+const FEEDBACK_API_URL = import.meta.env.VITE_FEEDBACK_API_URL || "https://api.nekofix.de/feedback";
+
 export default function Pricing() {
   // Feedback Form State
-  const [formData, setFormData] = useState({ name: "", email: "", type: "Problem", message: "" });
-  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success">("idle");
+  const [formData, setFormData] = useState({ name: "", email: "", type: "Problem", message: "", website: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [formError, setFormError] = useState("");
 
   // Verfügbare Test-Plätze: fester Wert, damit die Zahl nicht bei jedem Laden schwankt
   const slotsLeft = 14;
@@ -29,16 +32,31 @@ export default function Pricing() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-    
+
     setFormStatus("sending");
-    // Simulate API request to serverless function / Formspree
-    setTimeout(() => {
+    setFormError("");
+
+    try {
+      const response = await fetch(FEEDBACK_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || "Unbekannter Fehler beim Senden.");
+      }
+
       setFormStatus("success");
-      setFormData({ name: "", email: "", type: "Problem", message: "" });
-    }, 1500);
+      setFormData({ name: "", email: "", type: "Problem", message: "", website: "" });
+    } catch (err) {
+      setFormStatus("error");
+      setFormError(err instanceof Error ? err.message : "E-Mail konnte nicht gesendet werden. Bitte später erneut versuchen.");
+    }
   };
 
   return (
@@ -175,6 +193,18 @@ export default function Pricing() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Honeypot-Feld gegen Spam-Bots: für Menschen unsichtbar, echte Nutzer lassen es leer */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleInputChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="absolute -left-[9999px] w-px h-px overflow-hidden"
+                  />
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-xs font-bold text-brand-secondary mb-1">
@@ -242,8 +272,14 @@ export default function Pricing() {
                     ></textarea>
                   </div>
 
-                  <button 
-                    type="submit" 
+                  {formStatus === "error" && (
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-xs text-red-700">
+                      {formError}
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
                     disabled={formStatus === "sending"}
                     className="w-full py-3 bg-brand-primary hover:bg-brand-primary/95 text-white font-semibold rounded-lg text-sm flex items-center justify-center gap-2 shadow transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none"
                   >

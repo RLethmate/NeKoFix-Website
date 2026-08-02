@@ -8,6 +8,7 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import Impressum from './components/Impressum';
 import Datenschutz from './components/Datenschutz';
+import NekoFixWordmark from './components/NekoFixWordmark';
 
 export default function App() {
   const [hash, setHash] = useState(window.location.hash);
@@ -32,7 +33,7 @@ export default function App() {
       <header className="absolute top-0 w-full z-50 py-6">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <span className="text-brand-primary font-bold text-2xl tracking-tight">NeKo<span className="text-brand-secondary">Fix</span></span>
+            <NekoFixWordmark className="text-brand-primary text-2xl tracking-tight" />
           </div>
           <a href="#pricing" className="text-sm font-medium text-brand-primary hover:text-brand-secondary transition-colors">
             Preise ansehen

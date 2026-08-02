@@ -1,0 +1,17 @@
+{
+  "name": "nekofix-feedback-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kleiner Mail-Endpunkt fuer das NeKoFix-Feedback-Formular. Nimmt Formular-Einsendungen entgegen und verschickt sie per SMTP, ohne die Daten bei einem Drittanbieter zu speichern.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemailer": "^9.0.3"
+  }
+}

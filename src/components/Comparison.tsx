@@ -1,4 +1,5 @@
 import { ShieldAlert, AlertTriangle, CheckCircle2, Flame, HelpCircle } from "lucide-react";
+import NekoFixWordmark from "./NekoFixWordmark";
 
 export default function Comparison() {
   const comparisons = [
@@ -88,7 +89,13 @@ export default function Comparison() {
                   <comp.icon className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-brand-secondary">{comp.title}</h3>
+                  <h3 className="text-xl font-bold text-brand-secondary">
+                    {comp.title === "NeKoFix Assistent" ? (
+                      <><NekoFixWordmark /> Assistent</>
+                    ) : (
+                      comp.title
+                    )}
+                  </h3>
                   <p className="text-xs text-brand-ink/50 font-medium">{comp.subtitle}</p>
                 </div>
               </div>

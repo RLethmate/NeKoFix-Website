@@ -1,5 +1,6 @@
 import { ArrowRight, Play, Database, Shield, Zap, Scale } from "lucide-react";
 import { useState } from "react";
+import NekoFixWordmark from "./NekoFixWordmark";
 
 export default function Hero() {
   // A/B testing claims config
@@ -126,7 +127,7 @@ export default function Hero() {
             {/* App Header */}
             <div className="bg-brand-secondary px-6 py-3.5 flex items-center justify-between text-white border-b border-black/10 shrink-0">
               <div className="flex items-center gap-4">
-                <div className="font-extrabold tracking-tight text-xl">NeKoFix<span className="text-brand-primary bg-white px-1.5 py-0.5 rounded ml-1.5 text-xs font-semibold">LOCAL</span></div>
+                <div className="tracking-tight text-xl flex items-center"><NekoFixWordmark /><span className="text-brand-primary bg-white px-1.5 py-0.5 rounded ml-1.5 text-xs font-semibold">LOCAL</span></div>
                 <div className="flex items-center gap-2 text-xs ml-6">
                   <span className="text-white/60">Aktives Objekt:</span>
                   <div className="bg-black/15 hover:bg-black/25 border border-white/10 rounded px-2.5 py-1.5 flex items-center gap-6 cursor-pointer transition-colors backdrop-blur-sm">
