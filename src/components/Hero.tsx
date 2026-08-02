@@ -6,15 +6,23 @@ export default function Hero() {
   const claims = [
     {
       h1: "Mietverwaltung & Abrechnung - fast wie von selbst.",
-      sub: "Die sichere Alternative zu Excel und teuren Software-Abos. Entwickelt für private Vermieter, die ihre Immobilien nebenbei verwalten – rechtssicher, schnell und 100% lokal."
+      sub: "Die datenschutzfreundliche Alternative zu Excel und teuren Software-Abos. Entwickelt für private Vermieter, die ihre Immobilien nebenbei verwalten – orientiert am aktuellen Rechtsstand, zügig einsetzbar und 100% lokal."
     },
     {
       h1: "Vom Kontoauszug zur fertigen Abrechnung – an einem Nachmittag.",
       sub: "Keine Formelfehler in Excel, kein Stress mit Techem oder Ista. Verwalte deine Mieteinheiten, passe Mieten automatisch an und erstelle Abrechnungen lokal im Browser."
     },
     {
-      h1: "Rechtssicher abrechnen und verwalten.",
-      sub: "CO2-Aufteilung, Indexmieten und Heizungswechsel uvm. einfach gelöst. Deine sensiblen Mieterdaten verlassen niemals deinen PC – DSGVO-sicher und lokal gespeichert."
+      h1: "Nach aktuellem Rechtsstand abrechnen und verwalten.",
+      sub: "CO2-Aufteilung, Indexmieten und Heizungswechsel uvm. einfach gelöst. Deine sensiblen Mieterdaten verlassen niemals deinen PC – datenschutzfreundlich lokal gespeichert."
+    },
+    {
+      h1: "Die Hausverwaltungs-App, die Spaß macht.",
+      sub: "Weil alles an einem Ort ist und du die Fäden selbst in der Hand hast: Mieteinheiten, Abrechnungen und Zahlungen übersichtlich zusammen – statt verteilt auf Excel, PDFs und E-Mails."
+    },
+    {
+      h1: "Mieterdaten gehören Mietern – nicht der Cloud.",
+      sub: "Volle Datenhoheit, kein Kompromiss: Sensible Mieter- und Finanzdaten verlassen niemals deinen Computer. NeKoFix verarbeitet alles lokal in deinem Browser – ganz ohne fremde Server."
     }
   ];
 
@@ -31,7 +39,7 @@ export default function Hero() {
           {/* Beta Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6 animate-pulse">
             <span className="w-2 h-2 rounded-full bg-brand-primary"></span>
-            Gratis Beta-Phase: Bis zu 3 Einheiten kostenlos erproben
+            Gratis Beta-Phase: Voller Funktionsumfang bis Ende September kostenlos
           </div>
 
           {/* Headline - Modular for A/B Testing */}
@@ -86,7 +94,7 @@ export default function Hero() {
                 <Shield className="w-5 h-5" />
               </div>
               <div className="text-left">
-                <h3 className="font-semibold text-sm text-brand-ink">100% DSGVO-Sicher</h3>
+                <h3 className="font-semibold text-sm text-brand-ink">Datenschutzfreundlich by Design</h3>
                 <p className="text-xs text-brand-ink/60">Alle Daten bleiben lokal auf deinem PC</p>
               </div>
             </div>
@@ -95,7 +103,7 @@ export default function Hero() {
                 <Zap className="w-5 h-5" />
               </div>
               <div className="text-left">
-                <h3 className="font-semibold text-sm text-brand-ink">Sekundenschnell</h3>
+                <h3 className="font-semibold text-sm text-brand-ink">Zügig</h3>
                 <p className="text-xs text-brand-ink/60">Bank-CSV rein, Abrechnung raus</p>
               </div>
             </div>
@@ -104,7 +112,7 @@ export default function Hero() {
                 <Scale className="w-5 h-5" />
               </div>
               <div className="text-left">
-                <h3 className="font-semibold text-sm text-brand-ink">Rechtssicher 2026</h3>
+                <h3 className="font-semibold text-sm text-brand-ink">Rechtlich aktuell</h3>
                 <p className="text-xs text-brand-ink/60">Inklusive CO2-Aufteilung & § 35a</p>
               </div>
             </div>
@@ -114,9 +122,6 @@ export default function Hero() {
         {/* Asymmetric Interactive App Mockup (Slightly tilted for premium feel) */}
         <div className="relative mx-auto w-full max-w-5xl lg:translate-y-8 z-10 transition-transform duration-500 hover:rotate-0 transform rotate-0 lg:-rotate-1 lg:scale-102">
           <div className="rounded-2xl border border-gray-200/80 bg-[#f3f4f6] shadow-2xl overflow-hidden aspect-[16/10] flex flex-col relative w-full">
-            
-            {/* Try to load screenshot from assets if placed, fallback to clean interactive CSS mockup */}
-            <div className="absolute inset-0 bg-cover bg-center opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ backgroundImage: "url('/assets/screenshots/dashboard.png')" }}></div>
             
             {/* App Header */}
             <div className="bg-brand-secondary px-6 py-3.5 flex items-center justify-between text-white border-b border-black/10 shrink-0">
@@ -141,28 +146,27 @@ export default function Hero() {
               <div className="w-56 bg-gray-50 border-r border-gray-200/80 p-5 shrink-0 flex flex-col gap-1 hidden sm:flex">
                 <div className="text-[10px] uppercase font-bold text-gray-400 mb-3 tracking-wider">Abrechnungs-Flow</div>
                 {[
-                  {num: "1", label: "Stammdaten & Verträge", active: false},
-                  {num: "2", label: "Kontoauszug-Import", active: false},
-                  {num: "3", label: "Kostenaufteilung", active: false},
-                  {num: "4", label: "CO2- & Heizkosten", active: false},
-                  {num: "5", label: "Mietanpassung & Index", active: false},
+                  {num: "1", label: "Gebäude & Einheiten", active: false},
+                  {num: "2", label: "Heizung", active: false},
+                  {num: "3", label: "Kosten", active: false},
+                  {num: "4", label: "Nebenkosten-Saldo", active: false},
                 ].map(s => (
                   <div key={s.num} className="flex items-center gap-3 py-2 px-2.5 rounded-lg hover:bg-white text-sm text-gray-500 hover:text-gray-900 transition-all cursor-pointer">
                     <div className="w-6 h-6 rounded-full border border-gray-200 text-gray-400 bg-white flex items-center justify-center text-[11px] font-bold">{s.num}</div>
                     <span className="font-medium text-xs">{s.label}</span>
                   </div>
                 ))}
-                
+
                 <div className="flex items-center gap-3 mt-1 py-2 px-2.5 rounded-lg bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-sm font-semibold cursor-pointer relative overflow-hidden">
                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-brand-primary"></div>
-                  <div className="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center text-[11px] font-bold ml-1">6</div>
-                  <span className="text-xs">Abrechnung & Export</span>
+                  <div className="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center text-[11px] font-bold ml-1">5</div>
+                  <span className="text-xs">Fertige Abrechnung</span>
                 </div>
 
                 <div className="text-[10px] uppercase font-bold text-gray-400 mb-3 tracking-wider mt-6">Zahlungen & Tracking</div>
                 <div className="flex items-center gap-3 py-2 px-2.5 rounded-lg hover:bg-white text-sm text-gray-500 hover:text-gray-900 transition-all cursor-pointer">
-                  <div className="w-6 h-6 rounded-full border border-gray-200 text-gray-400 bg-white flex items-center justify-center text-[11px] font-bold">7</div>
-                  <span className="font-medium text-xs">Mieteingänge tracken</span>
+                  <div className="w-6 h-6 rounded-full border border-gray-200 text-gray-400 bg-white flex items-center justify-center text-[11px] font-bold">6</div>
+                  <span className="font-medium text-xs">Zahlungen (Ist)</span>
                 </div>
               </div>
 
@@ -170,7 +174,7 @@ export default function Hero() {
               <div className="flex-1 bg-white p-6 flex flex-col min-w-0">
                 <div className="flex justify-between items-center mb-4">
                   <div>
-                    <h2 className="text-xl font-bold text-gray-800">6 · Abrechnung & Export</h2>
+                    <h2 className="text-xl font-bold text-gray-800">5 · Fertige Abrechnung</h2>
                     <p className="text-xs text-gray-500 mt-0.5">Alle Mieterabrechnungen sind geprüft und bereit zum Export.</p>
                   </div>
                   <span className="px-3 py-1 rounded-full bg-green-100 text-green-800 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5">
@@ -181,9 +185,9 @@ export default function Hero() {
                 
                 {/* Tabs */}
                 <div className="flex gap-2 mb-4 overflow-x-hidden border-b border-gray-100 pb-3">
-                  <div className="px-3.5 py-2 rounded-lg border border-gray-200 bg-gray-50 text-xs text-gray-600 font-medium whitespace-nowrap shadow-sm">EG · Sarah Müller</div>
-                  <div className="px-3.5 py-2 rounded-lg border border-brand-primary/30 bg-brand-primary/10 text-brand-primary text-xs font-bold whitespace-nowrap shadow-sm">1. OG · Christian Weber</div>
-                  <div className="px-3.5 py-2 rounded-lg border border-gray-200 bg-gray-50 text-xs text-gray-600 font-medium whitespace-nowrap shadow-sm">DG · Familie Schmidt</div>
+                  <div className="px-3.5 py-2 rounded-lg border border-gray-200 bg-gray-50 text-xs text-gray-600 font-medium whitespace-nowrap shadow-sm">EG · Christian Weber</div>
+                  <div className="px-3.5 py-2 rounded-lg border border-brand-primary/30 bg-brand-primary/10 text-brand-primary text-xs font-bold whitespace-nowrap shadow-sm">1. OG · Familie Yilmaz</div>
+                  <div className="px-3.5 py-2 rounded-lg border border-gray-200 bg-gray-50 text-xs text-gray-600 font-medium whitespace-nowrap shadow-sm">DG · Familie Nguyen</div>
                 </div>
 
                 {/* Document Card */}
@@ -193,7 +197,7 @@ export default function Hero() {
                       <div>
                         <h3 className="text-md font-bold text-gray-800">Betriebs- und Heizkostenabrechnung 2025</h3>
                         <div className="text-[11px] text-gray-400 mt-1">
-                          Objekt: Schillerstr. 4 · Einheit: 1. OG · Mieter: <b>Christian Weber</b>
+                          Objekt: Schillerstr. 4 · Einheit: 1. OG · Mieter: <b>Familie Yilmaz</b>
                         </div>
                       </div>
                       <div className="bg-brand-cream/80 text-brand-secondary px-3 py-1.5 rounded-lg border border-brand-cream text-center text-xs font-semibold shrink-0">

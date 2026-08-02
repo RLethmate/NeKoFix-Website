@@ -5,7 +5,7 @@ export default function FAQ() {
   const faqs = [
     {
       question: "Verlängert sich die Jahres-Lizenz automatisch?",
-      answer: "Nein. Wir glauben an faire Verträge ohne Abo-Fallen. Es gibt bei uns keine automatische Verlängerung. Nach Ablauf des Lizenzjahres entscheidest du selbst ganz flexibel per Stripe-Zahlungslink, ob du eine neue Lizenz für die nächste Abrechnungsperiode erwerben möchtest."
+      answer: "Nein. Wir glauben an faire Verträge ohne Abo-Fallen. Es gibt bei uns keine automatische Verlängerung. Nach Ablauf des Lizenzjahres entscheidest du selbst ganz flexibel, ob du eine neue Lizenz für die nächste Abrechnungsperiode erwerben möchtest."
     },
     {
       question: "Kann ich meine Daten aus dem Vorjahr wiederverwenden?",
@@ -13,7 +13,7 @@ export default function FAQ() {
     },
     {
       question: "Was passiert, wenn ich während des Jahres eine weitere Wohnung verwalte?",
-      answer: "Da die App komplett lokal läuft, kannst du jederzeit neue Wohnungen und Objekte hinzufügen. Solltest du über das kostenlose Limit von 3 Einheiten der Erprobungsphase hinausgehen, kannst du deine Lizenz unkompliziert per Stripe-Zahlungslink erweitern."
+      answer: "Da die App komplett lokal läuft, kannst du jederzeit neue Wohnungen und Objekte hinzufügen – während der Erprobungsphase bis Ende September ohne Begrenzung bei der Anzahl. Danach erwirbst du für die nächste Abrechnung unkompliziert einen einmaligen Lizenzschlüssel."
     },
     {
       question: "Benötige ich für das Tool eine ständige Internetverbindung?",

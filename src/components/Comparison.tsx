@@ -111,7 +111,7 @@ export default function Comparison() {
               {comp.highlight && (
                 <div className="border-t border-brand-primary/20 pt-6 text-center">
                   <span className="text-xs text-brand-secondary font-semibold italic">
-                    Lokale Sicherheit & volle Kontrolle über Ihre Finanzen.
+                    Lokale Sicherheit & volle Kontrolle über deine Finanzen.
                   </span>
                 </div>
               )}

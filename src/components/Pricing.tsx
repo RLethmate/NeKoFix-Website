@@ -1,46 +1,27 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { Check, Send, ShieldCheck, Ticket, KeyRound, ExternalLink } from "lucide-react";
+import { Check, Send, ShieldCheck, Ticket, KeyRound } from "lucide-react";
 
 export default function Pricing() {
   // Feedback Form State
   const [formData, setFormData] = useState({ name: "", email: "", type: "Problem", message: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success">("idle");
 
-  // Urgency Countdown (Simulated remaining slots to avoid time zone issues, or time countdown to end of month)
-  const [slotsLeft, setSlotsLeft] = useState(14);
-  const [timeLeft, setTimeLeft] = useState({ hours: 12, minutes: 34, seconds: 56 });
+  // Verfügbare Test-Plätze: fester Wert, damit die Zahl nicht bei jedem Laden schwankt
+  const slotsLeft = 14;
+  const [daysLeft, setDaysLeft] = useState(0);
 
   useEffect(() => {
-    // Generate countdown to end of current month
+    // Erprobungsphase läuft bis Ende September 2026 – Anzeige in ganzen Tagen
+    const erprobungsEnde = new Date(2026, 8, 30, 23, 59, 59);
     const updateCountdown = () => {
       const now = new Date();
-      const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
-      const diff = endOfMonth.getTime() - now.getTime();
-
-      if (diff <= 0) {
-        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-
-      const hours = Math.floor(diff / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      setTimeLeft({ hours, minutes, seconds });
+      const diff = erprobungsEnde.getTime() - now.getTime();
+      setDaysLeft(Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24))));
     };
 
     updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-
-    // Slowly decrease remaining spots over time to simulate live urgency
-    const spotsInterval = setInterval(() => {
-      setSlotsLeft(prev => (prev > 3 ? prev - 1 : prev));
-    }, 45000);
-
-    return () => {
-      clearInterval(interval);
-      clearInterval(spotsInterval);
-    };
+    const interval = setInterval(updateCountdown, 1000 * 60 * 60);
+    return () => clearInterval(interval);
   }, []);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -73,7 +54,7 @@ export default function Pricing() {
             Gemeinsam zum besten Miet-Assistenten
           </h2>
           <p className="text-lg text-brand-ink/70 leading-relaxed">
-            Wir glauben nicht an teure Monats-Abos für Software, die du nur einmal im Jahr brauchst. Unterstütze uns in der Erprobungsphase und sichere dir dauerhaften kostenlosen Zugang.
+            Wir glauben nicht an teure Monats-Abos für Software, die du nur einmal im Jahr brauchst. Unterstütze uns in der Erprobungsphase und sichere dir kostenlosen Zugang für ein Jahr.
           </p>
         </div>
 
@@ -101,13 +82,13 @@ export default function Pricing() {
                 {/* Price Display */}
                 <div className="text-center">
                   <span className="text-5xl font-extrabold text-brand-secondary">0,00 €</span>
-                  <span className="text-brand-ink/50 text-sm ml-1">/ dauerhaft</span>
+                  <span className="text-brand-ink/50 text-sm ml-1">/ 1 Jahr</span>
                 </div>
 
                 <div className="border-t border-b border-dashed border-gray-200 py-4 space-y-3">
                   <div className="flex items-center gap-3 text-sm">
                     <Check className="w-5 h-5 text-brand-primary shrink-0" strokeWidth={2.5} />
-                    <span className="font-semibold text-brand-secondary">Bis zu 3 Wohneinheiten</span>
+                    <span className="font-semibold text-brand-secondary">Unbegrenzte Wohneinheiten</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm">
                     <Check className="w-5 h-5 text-brand-primary shrink-0" strokeWidth={2.5} />
@@ -129,9 +110,9 @@ export default function Pricing() {
                     <div className="bg-brand-primary h-full transition-all duration-1000" style={{ width: `${slotsLeft}%` }}></div>
                   </div>
                   <div className="text-center text-[11px] text-brand-ink/60">
-                    Aktion läuft diesen Monat noch:<br />
+                    Erprobungsphase läuft noch bis Ende September:<br />
                     <span className="font-mono font-bold text-brand-secondary text-xs">
-                      {timeLeft.hours} Std. {timeLeft.minutes} Min. {timeLeft.seconds} Sek.
+                      noch {daysLeft} {daysLeft === 1 ? "Tag" : "Tage"}
                     </span>
                   </div>
                 </div>
@@ -160,24 +141,13 @@ export default function Pricing() {
 
               <div className="text-sm text-brand-ink/80 leading-relaxed space-y-2">
                 <p>
-                  Für größere Portfolios (4+ Einheiten) erwerben Sie einen einmaligen Lizenzschlüssel via Stripe.
+                  Nach der Erprobungsphase (Ende September) erwirbst du für die nächste Abrechnung einen einmaligen Lizenzschlüssel.
                 </p>
                 <p className="text-xs">
                   💡 <b>Lokaler Datenschutz garantiert:</b> Der Code wird im Offline-Kaufprozess aus deinem <b>Objektname + Abrechnungsjahr</b> generiert. Die eigentliche Abrechnungs-Software prüft den Schlüssel komplett lokal bei dir im Browser. Es werden zu keinem Zeitpunkt Mieter- oder Finanzdaten über das Internet übertragen.
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-4 pt-2">
-                <a 
-                  href="https://stripe.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-brand-primary hover:text-brand-secondary transition-colors"
-                >
-                  Zu den Stripe-Optionen
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
             </div>
 
             {/* ACCESSIBLE FEEDBACK FORM */}
@@ -217,7 +187,7 @@ export default function Pricing() {
                         required 
                         value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="z. B. Ralf" 
+                        placeholder="z. B. Bernd" 
                         className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:bg-white transition-colors"
                       />
                     </div>
@@ -232,7 +202,7 @@ export default function Pricing() {
                         required 
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="z. B. ralf@example.com" 
+                        placeholder="z. B. bernd@example.com" 
                         className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:bg-white transition-colors"
                       />
                     </div>

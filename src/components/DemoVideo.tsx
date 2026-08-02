@@ -6,6 +6,7 @@ export default function DemoVideo() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [hasEnded, setHasEnded] = useState(false);
 
   const handlePlay = () => {
     const video = videoRef.current;
@@ -15,6 +16,10 @@ export default function DemoVideo() {
       video.pause();
       setIsPlaying(false);
     } else {
+      if (video.ended) {
+        video.currentTime = 0;
+      }
+      setHasEnded(false);
       video.play();
       setIsPlaying(true);
       setHasStarted(true);
@@ -31,7 +36,7 @@ export default function DemoVideo() {
 
   const handleVideoEnd = () => {
     setIsPlaying(false);
-    setHasStarted(false);
+    setHasEnded(true);
   };
 
   const handleVideoClick = () => {
@@ -43,10 +48,10 @@ export default function DemoVideo() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-brand-secondary tracking-tight mb-4">
-            Vom Beleg zur Zahlung – in Sekunden
+            Vom Beleg zur Zahlung – ohne Umwege
           </h2>
           <p className="text-lg text-brand-ink/70 max-w-2xl mx-auto">
-          Abrechnung erstellt, PDF geöffnet und am Ende der GiroCode per iPhone eingescannt. Der Mieter zahlt in Sekunden – ohne Tippfehler.
+          Abrechnung erstellt, PDF geöffnet und am Ende der GiroCode per iPhone eingescannt. Der Mieter zahlt bequem und ohne Tippfehler.
           </p>
         </div>
 
@@ -58,15 +63,15 @@ export default function DemoVideo() {
           >
             <video
               ref={videoRef}
-              src="/assets/Abrechnung+Giroscan.mp4"
+              src="/assets/QR-Code-Scan.mp4"
               className="w-full h-full object-cover"
               onEnded={handleVideoEnd}
               playsInline
               preload="metadata"
             />
 
-            {/* Play / Pause Overlay – shown when not playing */}
-            {!isPlaying && (
+            {/* Play / Pause Overlay – shown when not playing and not just finished (stays on last frame after playback) */}
+            {!isPlaying && !hasEnded && (
               <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center gap-4 transition-opacity duration-300 group-hover:bg-black/60">
                 {/* Play Button */}
                 <div className="w-20 h-20 bg-white/15 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:bg-brand-primary group-hover:scale-110 transition-all duration-300 shadow-xl">
@@ -107,7 +112,7 @@ export default function DemoVideo() {
             <div className="text-center">
               <div className="w-8 h-8 rounded-full bg-brand-primary/10 text-brand-primary font-bold text-sm flex items-center justify-center mx-auto mb-3">2</div>
               <div className="font-bold text-brand-secondary mb-1 text-sm">PDF exportieren & versenden</div>
-              <div className="text-xs text-brand-ink/60 leading-relaxed">Ein Klick erzeugt das rechtssichere PDF mit GiroCode – fertig zum Versenden.</div>
+              <div className="text-xs text-brand-ink/60 leading-relaxed">Ein Klick erzeugt das formell korrekte PDF mit GiroCode – fertig zum Versenden.</div>
             </div>
             <div className="text-center">
               <div className="w-8 h-8 rounded-full bg-brand-primary font-bold text-sm flex items-center justify-center mx-auto mb-3 text-white shadow-md">3</div>
