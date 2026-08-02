@@ -55,19 +55,20 @@ export default function Hero() {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md mb-12">
-            <a 
-              href="#pricing" 
+            <a
+              href="https://app.nekofix.de"
               className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-brand-primary rounded-xl hover:bg-brand-primary/95 transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
             >
               Kostenlos ausprobieren
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
-            <button 
+            <a
+              href="https://app.nekofix.de"
               className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-brand-secondary bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 shadow-sm hover:-translate-y-0.5 active:translate-y-0"
             >
               <Database className="mr-2 w-5 h-5 text-brand-primary" />
               Demodaten laden
-            </button>
+            </a>
           </div>
 
           {/* A/B Test Swapper (Simulated / For client review) */}
