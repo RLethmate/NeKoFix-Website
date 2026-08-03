@@ -1,13 +1,76 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { Check, Send, ShieldCheck, Ticket, KeyRound } from "lucide-react";
+import { Check, Send, ShieldCheck, KeyRound } from "lucide-react";
 
 const FEEDBACK_API_URL = import.meta.env.VITE_FEEDBACK_API_URL || "https://api.nekofix.de/feedback";
+
+// Eigenes Ticket-Icon statt lucide's "Ticket": die schmale, taillierte Kontur von lucide
+// wirkte bei Ralf wie ein Autobahnschild statt einem Kino-/Eintrittsticket. Diese Variante
+// zeigt die klassische Ticket-Silhouette (Rechteck mit Perforationslinie und Lochung oben/unten).
+function TicketIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="4" width="18" height="16" rx="2.5" stroke="currentColor" strokeWidth="2" />
+      <line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" strokeWidth="2" strokeDasharray="2.2 2.2" />
+      <circle cx="12" cy="4" r="2" className="fill-brand-primary" />
+      <circle cx="12" cy="20" r="2" className="fill-brand-primary" />
+    </svg>
+  );
+}
 
 export default function Pricing() {
   // Feedback Form State
   const [formData, setFormData] = useState({ name: "", email: "", type: "Problem", message: "", website: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [formError, setFormError] = useState("");
+
+  // Beta-Ticket-Anmeldung: eigenes, kleineres Formular direkt am Ticket (US-Anmeldeprozess).
+  // Sammelt E-Mail + Einverständnis zur erneuten Kontaktaufnahme, um den Freischalt-Code
+  // (siehe calc.js nkFreischaltCode, Stufe 1: manuelle Ausgabe durch den Concierge) zeitnah
+  // per E-Mail nachzureichen.
+  const [showSignup, setShowSignup] = useState(false);
+  const [signupData, setSignupData] = useState({ name: "", email: "", consent: false, website: "" });
+  const [signupStatus, setSignupStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [signupError, setSignupError] = useState("");
+
+  const handleSignupChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
+    setSignupData(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+  };
+
+  const handleSignupSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!signupData.name || !signupData.email || !signupData.consent) return;
+
+    setSignupStatus("sending");
+    setSignupError("");
+
+    try {
+      const response = await fetch(FEEDBACK_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: signupData.name,
+          email: signupData.email,
+          type: "Beta-Freischaltung",
+          message:
+            "Möchte den kostenlosen Freischalt-Code für die Beta-Erprobungsphase erhalten (versandfertiges PDF ohne Wasserzeichen). " +
+            "Einverständnis zur Kontaktaufnahme per E-Mail zwecks Code-Ausgabe und Rückfragen zur Beta-Phase: ja.",
+          website: signupData.website,
+        }),
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || "Unbekannter Fehler beim Senden.");
+      }
+
+      setSignupStatus("success");
+      setSignupData({ name: "", email: "", consent: false, website: "" });
+    } catch (err) {
+      setSignupStatus("error");
+      setSignupError(err instanceof Error ? err.message : "Anfrage konnte nicht gesendet werden. Bitte später erneut versuchen.");
+    }
+  };
 
   // Verfügbare Test-Plätze: fester Wert, damit die Zahl nicht bei jedem Laden schwankt
   const slotsLeft = 14;
@@ -85,7 +148,7 @@ export default function Pricing() {
               
               {/* Ticket Top */}
               <div className="bg-brand-primary p-6 text-white text-center relative">
-                <Ticket className="w-12 h-12 mx-auto mb-3 opacity-90 animate-pulse" />
+                <TicketIcon className="w-12 h-12 mx-auto mb-3 opacity-90" />
                 <h3 className="text-xl font-bold tracking-wide uppercase">Beta-Erprobungs-Ticket</h3>
                 <p className="text-xs text-white/80 mt-1">Gültig für die aktuelle Abrechnungsperiode</p>
                 
@@ -141,6 +204,98 @@ export default function Pricing() {
                 <div className="text-xs text-brand-ink/50 text-center leading-relaxed">
                   Deine einzige Gegenleistung: Teile uns über das Formular mit, wenn du auf ein Problem stößt oder Wünsche hast!
                 </div>
+
+                {/* Anmeldeprozess: Klick auf das Ticket sichert den Freischalt-Code (ohne Wasserzeichen) */}
+                {signupStatus === "success" ? (
+                  <div className="bg-green-50 border border-green-200 rounded-xl p-4 text-center space-y-1">
+                    <div className="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center mx-auto text-green-600">
+                      <Check className="w-5 h-5" strokeWidth={3} />
+                    </div>
+                    <h4 className="font-bold text-green-900 text-sm">Ticket gesichert!</h4>
+                    <p className="text-xs text-green-700">
+                      Wir melden uns zeitnah per E-Mail mit deinem persönlichen Freischalt-Code.
+                    </p>
+                  </div>
+                ) : !showSignup ? (
+                  <button
+                    type="button"
+                    onClick={() => setShowSignup(true)}
+                    className="w-full py-3 bg-brand-primary hover:bg-brand-primary/95 text-white font-semibold rounded-lg text-sm flex items-center justify-center gap-2 shadow transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                  >
+                    Ticket kostenlos sichern
+                  </button>
+                ) : (
+                  <form onSubmit={handleSignupSubmit} className="space-y-3 text-left">
+                    {/* Honeypot-Feld gegen Spam-Bots */}
+                    <input
+                      type="text"
+                      name="website"
+                      value={signupData.website}
+                      onChange={handleSignupChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      className="absolute -left-[9999px] w-px h-px overflow-hidden"
+                    />
+                    <div>
+                      <label htmlFor="signup-name" className="block text-xs font-bold text-brand-secondary mb-1">
+                        Dein Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="signup-name"
+                        name="name"
+                        required
+                        value={signupData.name}
+                        onChange={handleSignupChange}
+                        placeholder="z. B. Bernd"
+                        className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:bg-white transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="signup-email" className="block text-xs font-bold text-brand-secondary mb-1">
+                        E-Mail-Adresse <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        id="signup-email"
+                        name="email"
+                        required
+                        value={signupData.email}
+                        onChange={handleSignupChange}
+                        placeholder="z. B. bernd@example.com"
+                        className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:bg-white transition-colors"
+                      />
+                    </div>
+                    <label className="flex items-start gap-2 text-xs text-brand-ink/70 leading-relaxed">
+                      <input
+                        type="checkbox"
+                        name="consent"
+                        required
+                        checked={signupData.consent}
+                        onChange={handleSignupChange}
+                        className="mt-0.5 shrink-0"
+                      />
+                      <span>
+                        Ich bin einverstanden, dass NeKoFix mich per E-Mail zur Ausgabe meines Freischalt-Codes und zu Rückfragen zur Beta-Phase kontaktiert. <span className="text-red-500">*</span>
+                      </span>
+                    </label>
+
+                    {signupStatus === "error" && (
+                      <div className="bg-red-50 border border-red-200 rounded-lg p-2.5 text-xs text-red-700">
+                        {signupError}
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={signupStatus === "sending" || !signupData.consent}
+                      className="w-full py-3 bg-brand-primary hover:bg-brand-primary/95 text-white font-semibold rounded-lg text-sm flex items-center justify-center gap-2 shadow transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none"
+                    >
+                      {signupStatus === "sending" ? "Wird gesendet..." : "Ticket kostenlos sichern"}
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </div>
@@ -162,7 +317,7 @@ export default function Pricing() {
 
               <div className="text-sm text-brand-ink/80 leading-relaxed space-y-2">
                 <p>
-                  Nach der Erprobungsphase (Ende September) erwirbst du für die nächste Abrechnung einen einmaligen Lizenzschlüssel.
+                  Für die aktuelle Erprobungsphase sicherst du dir den Freischalt-Code kostenlos über das Beta-Ticket links – trag dort einfach Name und E-Mail-Adresse ein. Nach der Erprobungsphase (Ende September) erwirbst du für die nächste Abrechnung einen einmaligen Lizenzschlüssel nach dem gleichen Prinzip.
                 </p>
                 <p className="text-xs">
                   💡 <b>Lokaler Datenschutz garantiert:</b> Der Code wird im Offline-Kaufprozess aus deinem <b>Objektname + Abrechnungsjahr</b> generiert. Die eigentliche Abrechnungs-Software prüft den Schlüssel komplett lokal bei dir im Browser. Es werden zu keinem Zeitpunkt Mieter- oder Finanzdaten über das Internet übertragen.

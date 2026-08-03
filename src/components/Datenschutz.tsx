@@ -18,7 +18,7 @@ export default function Datenschutz() {
             <br />
             Havixburgweg 2a, 48147 Münster
             <br />
-            E-Mail: r.lethmate@gmail.com
+            E-Mail: info@nekofix.de
             <br />
             Telefon: 0251-37989502
           </p>

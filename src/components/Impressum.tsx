@@ -25,7 +25,7 @@ export default function Impressum() {
           <p>
             Telefon: 0251-37989502
             <br />
-            E-Mail: r.lethmate@gmail.com
+            E-Mail: info@nekofix.de
           </p>
         </section>
 
@@ -105,7 +105,7 @@ export default function Impressum() {
             Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die
             Urheberrechte Dritter beachtet. Inhalte Dritter sind als solche gekennzeichnet.
             Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um
-            einen entsprechenden Hinweis an r.lethmate@gmail.com. Bei Bekanntwerden von
+            einen entsprechenden Hinweis an info@nekofix.de. Bei Bekanntwerden von
             Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
           </p>
         </section>

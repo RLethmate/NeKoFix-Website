@@ -71,6 +71,14 @@ export default function Hero() {
             </a>
           </div>
 
+          {/* Höher platzierter Einstieg zum Anmeldeprozess für die wasserzeichenfreie Nutzung */}
+          <a
+            href="#pricing"
+            className="text-sm font-medium text-brand-primary hover:text-brand-secondary underline underline-offset-4 mb-10 transition-colors"
+          >
+            Ohne Wasserzeichen nutzen? Jetzt kostenloses Beta-Ticket sichern →
+          </a>
+
           {/* A/B Test Swapper (Simulated / For client review) */}
           <div className="flex items-center gap-2 mb-10 px-3 py-1.5 bg-brand-cream/50 rounded-lg border border-brand-cream text-xs text-brand-ink/60">
             <span>Claims testen:</span>
