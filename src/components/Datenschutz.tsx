@@ -7,7 +7,7 @@ export default function Datenschutz() {
         </a>
 
         <h1 className="text-3xl font-bold mt-6 mb-2">Datenschutzerklärung</h1>
-        <p className="text-sm text-gray-500 mb-8">Stand: 03-08-2026</p>
+        <p className="text-sm text-gray-500 mb-8">Stand: 04-08-2026</p>
 
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2">1. Verantwortlicher</h2>
@@ -28,18 +28,12 @@ export default function Datenschutz() {
           <h2 className="text-xl font-semibold mb-2">
             2. Grundsatz: Datensparsamkeit durch lokale Verarbeitung
           </h2>
-          <p className="text-sm mb-3">
-            Diese Website ist bewusst so gebaut, dass personenbezogene Daten so weit wie möglich
-            lokal auf dem Endgerät der Besucherin oder des Besuchers verbleiben. Es gibt aktuell
-            kein Server-Backend, keine Datenbank und keine Übermittlung von Formulareingaben an
-            uns oder an Dritte. Eingaben, die Sie z. B. in einem Formular auf dieser Seite
-            machen, werden ausschließlich vorübergehend im Arbeitsspeicher Ihres Browsers
-            verarbeitet und gehen beim Schließen oder Neuladen der Seite verloren. Es findet
-            keine Speicherung auf unseren Servern statt.
-          </p>
           <p className="text-sm">
-            Sobald sich dieser technische Stand ändert (z. B. durch Anbindung eines tatsächlichen
-            Formular-Versands), wird diese Datenschutzerklärung entsprechend ergänzt.
+            Diese Website ist bewusst so gebaut, dass personenbezogene Daten so weit wie möglich
+            lokal auf dem Endgerät der Besucherin oder des Besuchers verbleiben und es außer den
+            in Ziffer 3 beschriebenen Server-Logfiles keine Datenbank und keine dauerhafte
+            Speicherung auf unseren Servern gibt. Eine Ausnahme ist das Kontakt-/Feedbackformular
+            (siehe Ziffer 4): Dort eingegebene Daten werden tatsächlich an uns übermittelt.
           </p>
         </section>
 
@@ -72,12 +66,27 @@ export default function Datenschutz() {
 
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2">4. Kontakt-/Feedbackformular</h2>
+          <p className="text-sm mb-3">
+            Wenn Sie das Feedbackformular auf dieser Website nutzen, übermitteln wir die dort
+            eingegebenen Daten (Name, E-Mail-Adresse, ausgewählte Kategorie, Nachricht) an einen
+            von uns betriebenen Server, der daraus automatisiert eine E-Mail erzeugt und diese
+            über den E-Mail-Versanddienst Gmail (Google Ireland Limited, Gordon House, Barrow
+            Street, Dublin 4, Irland) an unser eigenes Postfach zustellt. Rechtsgrundlage ist
+            Art. 6 Abs. 1 lit. b bzw. f DSGVO (Bearbeitung Ihrer Anfrage bzw. unser berechtigtes
+            Interesse daran).
+          </p>
+          <p className="text-sm mb-3">
+            Auf unserem Server selbst werden die Formulardaten nicht dauerhaft gespeichert
+            (keine Datenbank); sie bestehen nur für die Dauer der Verarbeitung des jeweiligen
+            Sendevorgangs. Gespeichert werden die Angaben ausschließlich als E-Mail in unserem
+            Postfach, bis wir sie im Rahmen der Anfragebearbeitung löschen. Zusätzlich wird die
+            IP-Adresse des absendenden Geräts serverseitig für bis zu eine Stunde vorgehalten, um
+            eine zu hohe Anzahl an Einsendungen von derselben Adresse zu verhindern
+            (Missbrauchsschutz), und danach automatisch verworfen.
+          </p>
           <p className="text-sm">
-            Sofern diese Website ein Kontakt- oder Feedbackformular bereitstellt, werden die dort
-            eingegebenen Daten (Name, E-Mail-Adresse, Nachricht) nach aktuellem technischem Stand
-            nicht an uns übermittelt und nicht gespeichert (siehe Ziffer 2). Sobald ein
-            tatsächlicher Versand implementiert wird, werden Zweck, Rechtsgrundlage (i. d. R.
-            Art. 6 Abs. 1 lit. b oder f DSGVO) und Speicherdauer hier ergänzt.
+            Die Angabe der Daten ist freiwillig; ohne sie können wir Ihr Feedback jedoch nicht
+            beantworten.
           </p>
         </section>
 
