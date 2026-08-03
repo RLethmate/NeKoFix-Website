@@ -20,3 +20,4 @@ https://ai.studio/apps/c147d8b9-ca0a-4d42-a487-87b434d29727
 
 <!-- Testcommit 2026-08-03: prüft, ob die neue Coolify-GitHub-App-Quelle automatisch deployt. -->
 <!-- Testcommit 2026-08-03 (2): dito, jetzt nach Umstellung von nekofix-website auf die GitHub-App-Quelle. -->
+<!-- Testcommit 2026-08-03 (3): erneuter Versuch, Branch/Watch-Paths/Auto-Deploy bei beiden identisch. -->
