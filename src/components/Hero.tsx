@@ -57,6 +57,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md mb-12">
             <a
               href="https://app.nekofix.de/?start=leer"
+              data-umami-event="cta-kostenlos-ausprobieren"
               className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-brand-primary rounded-xl hover:bg-brand-primary/95 transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
             >
               Kostenlos ausprobieren
@@ -64,6 +65,7 @@ export default function Hero() {
             </a>
             <a
               href="https://app.nekofix.de/?start=demo"
+              data-umami-event="cta-demodaten-laden"
               className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-brand-secondary bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 shadow-sm hover:-translate-y-0.5 active:translate-y-0"
             >
               <Database className="mr-2 w-5 h-5 text-brand-primary" />

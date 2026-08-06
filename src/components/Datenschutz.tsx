@@ -7,7 +7,7 @@ export default function Datenschutz() {
         </a>
 
         <h1 className="text-3xl font-bold mt-6 mb-2">Datenschutzerklärung</h1>
-        <p className="text-sm text-gray-500 mb-8">Stand: 04-08-2026</p>
+        <p className="text-sm text-gray-500 mb-8">Stand: 06-08-2026</p>
 
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2">1. Verantwortlicher</h2>
@@ -91,12 +91,30 @@ export default function Datenschutz() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-2">5. Cookies und Tracking</h2>
+          <h2 className="text-xl font-semibold mb-2">5. Cookies und Web-Analyse</h2>
+          <p className="text-sm mb-3">
+            Diese Website setzt keine Cookies ein. Zur anonymen, aggregierten Analyse der
+            Seitenaufrufe verwenden wir <strong>Umami</strong>, ein selbst gehostetes, quelloffenes
+            Analyse-Tool, das ausschließlich auf unserem eigenen Server
+            (analytics.nekofix.de, ebenfalls bei Hetzner Online GmbH) betrieben wird. Es findet
+            keine Übermittlung an Dritte oder an Server außerhalb der EU statt.
+          </p>
+          <p className="text-sm mb-3">
+            Umami erhebt keine personenbezogenen Daten im Sinne der DSGVO: Es werden keine Cookies
+            gesetzt, keine IP-Adressen gespeichert und keine Nutzerinnen oder Nutzer
+            geräteübergreifend wiedererkannt. Ausgewertet werden lediglich aggregierte,
+            nicht-personenbeziehbare Kennzahlen wie Seitenaufrufe, ungefähre Herkunft (Land) und
+            verwendeter Gerätetyp/Browser.
+          </p>
+          <p className="text-sm mb-3">
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der
+            Reichweitenmessung zur Optimierung unseres Angebots). Da keine personenbezogenen Daten
+            verarbeitet werden, ist gemäß § 25 TTDSG bzw. Art. 6 Abs. 1 lit. f DSGVO keine
+            Einwilligung erforderlich.
+          </p>
           <p className="text-sm">
-            Diese Website setzt derzeit keine Cookies und keine Analyse- oder Trackingtools (z. B.
-            Google Analytics, Matomo, Meta-Pixel) ein. Es findet kein Tracking Ihres Verhaltens
-            auf dieser Website statt. Auch Schriftarten werden ausschließlich lokal von diesem
-            Server ausgeliefert, nicht von externen Font-Anbietern nachgeladen.
+            Auch Schriftarten werden weiterhin ausschließlich lokal von diesem Server
+            ausgeliefert, nicht von externen Font-Anbietern nachgeladen.
           </p>
         </section>
 
