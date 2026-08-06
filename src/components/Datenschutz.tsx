@@ -32,8 +32,9 @@ export default function Datenschutz() {
             Diese Website ist bewusst so gebaut, dass personenbezogene Daten so weit wie möglich
             lokal auf dem Endgerät der Besucherin oder des Besuchers verbleiben und es außer den
             in Ziffer 3 beschriebenen Server-Logfiles keine Datenbank und keine dauerhafte
-            Speicherung auf unseren Servern gibt. Eine Ausnahme ist das Kontakt-/Feedbackformular
-            (siehe Ziffer 4): Dort eingegebene Daten werden tatsächlich an uns übermittelt.
+            Speicherung auf unseren Servern gibt. Eine Ausnahme sind das Kontakt-/Feedbackformular
+            und das Beta-Ticket-Anmeldeformular (siehe Ziffer 4 und 5): Dort eingegebene Daten
+            werden an uns übermittelt.
           </p>
         </section>
 
@@ -91,7 +92,31 @@ export default function Datenschutz() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-2">5. Cookies und Web-Analyse</h2>
+          <h2 className="text-xl font-semibold mb-2">5. Beta-Ticket-Anmeldeformular</h2>
+          <p className="text-sm mb-3">
+            Über das Beta-Ticket auf der Preise-Seite können Sie sich für die aktuell kostenlose
+            Erprobungsphase anmelden. Wenn Sie dieses Formular nutzen, übermitteln wir die dort
+            eingegebenen Daten (Name, E-Mail-Adresse, Einverständnis zur Kontaktaufnahme) an
+            denselben, in Ziffer 4 beschriebenen Server, der daraus automatisiert eine E-Mail an
+            unser eigenes Postfach erzeugt. Verarbeitung, Speicherung (keine Datenbank, IP-
+            Vorhaltung zum Missbrauchsschutz) und Versand erfolgen technisch identisch zum
+            Kontakt-/Feedbackformular (siehe Ziffer 4).
+          </p>
+          <p className="text-sm mb-3">
+            Wir nutzen die Daten ausschließlich, um Ihnen den kostenlosen Freischalt-Code für die
+            Beta-Erprobungsphase per E-Mail zuzusenden und um Rückfragen zur Beta-Phase zu klären.
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Erbringung der von Ihnen angeforderten,
+            unentgeltlichen Leistung) in Verbindung mit Ihrer im Formular abgegebenen Einwilligung
+            zur Kontaktaufnahme (Art. 6 Abs. 1 lit. a DSGVO).
+          </p>
+          <p className="text-sm">
+            Die Angabe der Daten ist freiwillig; ohne sie können wir Ihnen jedoch keinen
+            Freischalt-Code zusenden.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-2">6. Cookies und Web-Analyse</h2>
           <p className="text-sm mb-3">
             Diese Website setzt keine Cookies ein. Zur anonymen, aggregierten Analyse der
             Seitenaufrufe verwenden wir <strong>Umami</strong>, ein selbst gehostetes, quelloffenes
@@ -119,7 +144,7 @@ export default function Datenschutz() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-2">6. Ihre Rechte als betroffene Person</h2>
+          <h2 className="text-xl font-semibold mb-2">7. Ihre Rechte als betroffene Person</h2>
           <p className="text-sm mb-3">
             Ihnen stehen nach der DSGVO folgende Rechte gegenüber uns zu, soweit die gesetzlichen
             Voraussetzungen vorliegen:
@@ -140,7 +165,7 @@ export default function Datenschutz() {
 
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2">
-            7. Beschwerderecht bei einer Aufsichtsbehörde
+            8. Beschwerderecht bei einer Aufsichtsbehörde
           </h2>
           <p className="text-sm">
             Sie haben unbeschadet eines anderweitigen verwaltungsrechtlichen oder gerichtlichen
