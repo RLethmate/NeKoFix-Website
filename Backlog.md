@@ -123,7 +123,7 @@
 - [x] **US-93 · Google Fonts selbst hosten statt extern laden (Priorität: hoch)** — [Datei](backlog/US-93-google-fonts-selbst-hosten.md) · (noch kein Issue)
 - [x] **US-92 · Rechtstexte einbinden (Impressum, Datenschutz, Urheberrecht)** — [Datei](backlog/US-92-rechtstexte-einbinden.md) · anwaltliche Prüfung vor Live-Gang weiterhin offen · (noch kein Issue)
 - [ ] **US-94 · Abmahnschutz-Checkliste für Checkout, Hosting und künftiges SaaS-Tool abarbeiten** — [Datei](backlog/US-94-abmahnschutz-checkliste-shop.md) · (noch kein Issue)
-- [ ] **US-95 · Rudimentäre Besucherzählung ohne Cookie-Banner einführen** — [Datei](backlog/US-95-rudimentaere-besucherzaehlung.md) · Stufe A (GoAccess) live, Stufe B offen · (noch kein Issue)
+- [x] **US-95 · Rudimentäre Besucherzählung ohne Cookie-Banner einführen** — [Datei](backlog/US-95-rudimentaere-besucherzaehlung.md) · Stufe A (GoAccess) + Stufe B (Umami) live · (noch kein Issue)
 
 ## Verworfen
 - **US-16 · Datensicht je Rolle trennen** — [Datei](backlog/US-16-datensicht-je-rolle-trennen.md) · Anforderung betraf das Mieter-PDF → abgedeckt durch US-18.

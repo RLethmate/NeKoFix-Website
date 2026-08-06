@@ -1,6 +1,6 @@
 # US-95 · Rudimentäre Besucherzählung ohne Cookie-Banner einführen
 
-**Status:** In Progress — Stufe A umgesetzt (2026-08-06), Stufe B offen
+**Status:** Done — Stufe A + Stufe B umgesetzt (2026-08-06)
 
 **Als** Betreiber der NeKoFix-Website
 **möchte ich** grob sehen, wie viele Besucher die Website hat,
@@ -47,10 +47,11 @@ US-93) direkt widersprechen.
 - [x] Lösung liefert mindestens Seitenaufrufe pro Tag/Woche (Stufe A: GoAccess-Report).
 - [x] Keine Cookies gesetzt, keine personenbezogenen Daten dauerhaft im Klartext gespeichert
       (Stufe A: reine Log-Auswertung, kein neues Skript auf der Website).
-- [ ] Falls Stufe B: Datenschutzerklärung Ziffer 5 aktualisiert (Tool benennen, Rechtsgrundlage,
+- [x] Falls Stufe B: Datenschutzerklärung Ziffer 5 aktualisiert (Tool benennen, Rechtsgrundlage,
       Hinweis auf Zweck und dass kein Cookie-Banner nötig ist, mit Begründung).
-- [ ] Falls Stufe B: Tracking-Snippet läuft ausschließlich vom eigenen Server, keine Anfrage an
-      einen Drittanbieter im Netzwerk-Tab sichtbar.
+- [x] Falls Stufe B: Tracking-Snippet läuft ausschließlich vom eigenen Server. Direkt bestätigt
+      durch reale, neue Besuche im Umami-Dashboard bei jedem Testaufruf von nekofix.de — auf der
+      Website ist kein weiteres Tracking-Tool eingebunden, das das sonst hätte auslösen können.
 
 ## Umsetzung Stufe A (2026-08-06)
 
@@ -60,6 +61,22 @@ Ausgeliefert unter `https://stats.nekofix.de`, per Basic-Auth geschützt (eigene
 unabhängiger nginx-Container am selben Traefik-Proxy). Details/Runbook:
 `Setup-US-95-Stufe-A-GoAccess.md` (Projekt-Root des Website-Repos). Kein neues Tracking-Skript,
 keine Datenschutzerklärung-Änderung nötig, da bereits durch Ziffer 3 (Server-Logs) abgedeckt.
+
+## Umsetzung Stufe B (2026-08-06)
+
+Umami (self-hosted, Version 3.0.3) über Coolifys One-Click-Service-Katalog auf demselben CX23
+neben den bestehenden Apps deployt, erreichbar unter `https://analytics.nekofix.de` (eigener
+Login, Standard-Zugangsdaten nach Ersteinrichtung geändert). Tracking-Skript in `index.html`
+eingebunden (nur Marketing-Website `nekofix.de`, keine Instrumentierung von `app.nekofix.de` —
+bewusst zurückgestellt, siehe Diskussion in der Session). Zusätzlich zwei Klick-Events auf den
+Hero-CTAs (`cta-kostenlos-ausprobieren`, `cta-demodaten-laden`), um zu sehen, wie viele Besucher
+von der Website aus in Richtung App klicken. Datenschutzerklärung Ziffer 5 „Cookies und
+Web-Analyse" entsprechend neu formuliert (Tool benannt, Rechtsgrundlage Art. 6 Abs. 1 lit. f
+DSGVO, keine Einwilligung nötig da keine personenbezogenen Daten).
+
+**Bewusst nicht umgesetzt:** Tracking auf `app.nekofix.de` selbst (anderes Repo,
+`RLethmate/NeKoFix`) — Ralf hat sich für den ersten Wurf auf die Marketing-Website plus die
+beiden CTA-Klicks beschränkt.
 
 ## Quelle
 
