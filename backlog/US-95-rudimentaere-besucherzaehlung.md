@@ -1,6 +1,6 @@
 # US-95 · Rudimentäre Besucherzählung ohne Cookie-Banner einführen
 
-**Status:** offen
+**Status:** In Progress — Stufe A umgesetzt (2026-08-06), Stufe B offen
 
 **Als** Betreiber der NeKoFix-Website
 **möchte ich** grob sehen, wie viele Besucher die Website hat,
@@ -42,13 +42,24 @@ US-93) direkt widersprechen.
 
 ## Akzeptanzkriterien
 
-- [ ] Entscheidung getroffen: Stufe A (Log-Analyse) oder Stufe B (self-hosted Umami/Plausible CE).
-- [ ] Lösung liefert mindestens Seitenaufrufe pro Tag/Woche.
-- [ ] Keine Cookies gesetzt, keine personenbezogenen Daten dauerhaft im Klartext gespeichert.
+- [x] Entscheidung getroffen: erst Stufe A (Log-Analyse), danach Stufe B (self-hosted
+      Umami/Plausible CE) — beide nacheinander umgesetzt, nicht alternativ.
+- [x] Lösung liefert mindestens Seitenaufrufe pro Tag/Woche (Stufe A: GoAccess-Report).
+- [x] Keine Cookies gesetzt, keine personenbezogenen Daten dauerhaft im Klartext gespeichert
+      (Stufe A: reine Log-Auswertung, kein neues Skript auf der Website).
 - [ ] Falls Stufe B: Datenschutzerklärung Ziffer 5 aktualisiert (Tool benennen, Rechtsgrundlage,
       Hinweis auf Zweck und dass kein Cookie-Banner nötig ist, mit Begründung).
 - [ ] Falls Stufe B: Tracking-Snippet läuft ausschließlich vom eigenen Server, keine Anfrage an
       einen Drittanbieter im Netzwerk-Tab sichtbar.
+
+## Umsetzung Stufe A (2026-08-06)
+
+GoAccess wertet das Traefik-Access-Log (Common-Log-Format, gefiltert auf die beiden
+https-Router der Marketing-Domain) aus und erzeugt per Cronjob alle 10 Minuten einen HTML-Report.
+Ausgeliefert unter `https://stats.nekofix.de`, per Basic-Auth geschützt (eigener, von Coolify
+unabhängiger nginx-Container am selben Traefik-Proxy). Details/Runbook:
+`Setup-US-95-Stufe-A-GoAccess.md` (Projekt-Root des Website-Repos). Kein neues Tracking-Skript,
+keine Datenschutzerklärung-Änderung nötig, da bereits durch Ziffer 3 (Server-Logs) abgedeckt.
 
 ## Quelle
 
