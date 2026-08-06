@@ -1,0 +1,36 @@
+services:
+  notaus-panel:
+    image: node:20-alpine
+    command: ["node", "/app/server.js"]
+    restart: unless-stopped
+    volumes:
+      - /opt/nekofix-panel/server.js:/app/server.js:ro
+      - /opt/nekofix-panel/state:/data
+      - /data/coolify/proxy/dynamic:/dynamic
+    environment:
+      - STATE_FILE=/data/state.json
+      - DYNAMIC_DIR=/dynamic
+      - PLACEHOLDER_SERVICE_URL=http://notaus-placeholder:80
+      - PORT=3000
+    networks:
+      - coolify
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.notaus-panel.rule=Host(`panel.nekofix.de`)"
+      - "traefik.http.routers.notaus-panel.entrypoints=https"
+      - "traefik.http.routers.notaus-panel.tls.certresolver=letsencrypt"
+      - "traefik.http.services.notaus-panel.loadbalancer.server.port=3000"
+      - "traefik.http.middlewares.notaus-panel-auth.basicauth.usersfile=/traefik/notaus-panel.htpasswd"
+      - "traefik.http.routers.notaus-panel.middlewares=notaus-panel-auth"
+
+  notaus-placeholder:
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - /opt/nekofix-panel/placeholder:/usr/share/nginx/html:ro
+    networks:
+      - coolify
+
+networks:
+  coolify:
+    external: true
