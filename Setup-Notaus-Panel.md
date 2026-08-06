@@ -27,15 +27,18 @@ scp -r ops/notaus-panel root@nekofix-prod:/opt/nekofix-panel
 
 ## Schritt 2 — Auf dem Server: Verzeichnisse, Zustand, Zugangsdaten
 
-Per SSH auf dem Server:
+Per SSH auf dem Server (dort ist man i. d. R. bereits als `root` angemeldet — dann `sudo`
+weglassen, sonst kommt unnötig eine Passwortabfrage):
 
 ```bash
-sudo mkdir -p /opt/nekofix-panel/state
-sudo chmod 755 /opt/nekofix-panel/state
+mkdir -p /opt/nekofix-panel/state
+chmod 755 /opt/nekofix-panel/state
 
 # Basic-Auth-Zugangsdaten für das Panel — eigenes, neues Passwort (nicht identisch mit
 # stats.nekofix.de oder analytics.nekofix.de, da dieser Schalter deutlich mehr Wirkung hat)
-sudo htpasswd -cm /data/coolify/proxy/notaus-panel.htpasswd ralf
+# WICHTIG: diesen Schritt nicht überspringen — ohne diese Datei startet der Login nicht,
+# und der Proxy braucht danach einen ECHTEN Neustart (s. Hinweis unten), nicht nur `up -d`.
+htpasswd -cm /data/coolify/proxy/notaus-panel.htpasswd ralf
 ```
 
 ## Schritt 3 — DNS
@@ -50,14 +53,22 @@ cd /opt/nekofix-panel
 docker compose up -d
 ```
 
-Kontrolle:
+Kontrolle (Containernamen richten sich nach dem Verzeichnisnamen `nekofix-panel`, nicht nach dem
+Ordner `notaus-panel` innerhalb des Repos):
 
 ```bash
 docker ps --format "{{.Names}}\t{{.Status}}" | grep notaus
-docker logs notaus-panel-notaus-panel-1 --tail 20
+docker logs nekofix-panel-notaus-panel-1 --tail 20
 ```
 
 Die Logzeile sollte `Notaus-Panel läuft auf Port 3000` zeigen.
+
+Danach den Proxy einmal **per echtem Neustart** (nicht nur `up -d`, das ist bei unveränderter
+Compose-Datei ein No-Op und lädt die neue `.htpasswd` nicht nach) neu einlesen lassen:
+
+```bash
+docker restart coolify-proxy
+```
 
 ## Schritt 5 — Test: `https://panel.nekofix.de` aufrufen
 

@@ -1,6 +1,6 @@
 # US-96 · Not-Aus-Schalter für Website und App bereitstellen
 
-**Status:** In Progress
+**Status:** Done (2026-08-06)
 
 **Als** Betreiber von NeKoFix
 **möchte ich** die Marketing-Website und/oder die App per Tastendruck vom Handy aus durch eine
@@ -30,16 +30,16 @@ Quellcode: `ops/notaus-panel/` in diesem Repo. Deployment-Runbook:
 
 ## Akzeptanzkriterien
 
-- [ ] `https://panel.nekofix.de` fragt nach Benutzername/Passwort (eigene Zugangsdaten, nicht
+- [x] `https://panel.nekofix.de` fragt nach Benutzername/Passwort (eigene Zugangsdaten, nicht
       identisch mit `stats`/`analytics`) und zeigt danach die Schalter-Seite mit aktuellem Status.
-- [ ] Schalter „Website" aus → `nekofix.de` und `www.nekofix.de` zeigen die harmlose
+- [x] Schalter „Website" aus → `nekofix.de` und `www.nekofix.de` zeigen die harmlose
       Platzhalter-Seite, `app.nekofix.de` bleibt unverändert erreichbar.
-- [ ] Schalter „App" aus → `app.nekofix.de` zeigt die harmlose Platzhalter-Seite, die
+- [x] Schalter „App" aus → `app.nekofix.de` zeigt die harmlose Platzhalter-Seite, die
       Marketing-Website bleibt unverändert erreichbar.
-- [ ] Zurückschalten stellt den Normalzustand jeweils zuverlässig wieder her.
-- [ ] Wirkung tritt ohne Rebuild/Redeploy ein (Test: Zeit zwischen Tap und sichtbarer Änderung).
-- [ ] Die Schalter-Seite ist nicht indexierbar (`noindex`) und nirgends verlinkt.
-- [ ] Panel-Seite ist als Homescreen-Symbol vom Handy aus mit einem Tap erreichbar.
+- [x] Zurückschalten stellt den Normalzustand jeweils zuverlässig wieder her.
+- [x] Wirkung tritt ohne Rebuild/Redeploy ein (von Ralf per End-to-End-Test bestätigt).
+- [x] Die Schalter-Seite ist nicht indexierbar (`noindex`) und nirgends verlinkt.
+- [x] Panel-Seite ist als Homescreen-Symbol vom Handy aus mit einem Tap erreichbar.
 
 ## Quelle
 
