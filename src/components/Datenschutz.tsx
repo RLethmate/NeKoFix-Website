@@ -92,6 +92,16 @@ export default function Datenschutz() {
             eine zu hohe Anzahl an Einsendungen von derselben Adresse zu verhindern
             (Missbrauchsschutz), und danach automatisch verworfen.
           </p>
+          <p className="text-sm mb-3">
+            Das Postfach, an das der Server die E-Mail zustellt (info@nekofix.de), wird technisch
+            über den E-Mail-Weiterleitungsdienst ImprovMX (ImprovMX Incorporation, 8 The Green,
+            STE D, Dover, Delaware 19901, USA) betrieben, der eingehende Nachrichten an unsere
+            tatsächliche Mailbox weiterleitet. Dabei kann eine Verarbeitung in den USA
+            stattfinden. ImprovMX erklärt, sich an die Grundsätze des EU-U.S. Data Privacy
+            Framework zu halten, ist dafür jedoch nicht zertifiziert; eine nach Art. 44 ff. DSGVO
+            anerkannte Übermittlungsgrundlage (Angemessenheitsbeschluss, Standardvertragsklauseln)
+            liegt nach unserer Kenntnis nicht vor.
+          </p>
           <p className="text-sm">
             Die Angabe der Daten ist freiwillig; ohne sie können wir Ihr Feedback jedoch nicht
             beantworten.
