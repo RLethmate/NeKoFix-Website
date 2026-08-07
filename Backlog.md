@@ -125,6 +125,7 @@
 - [ ] **US-94 · Abmahnschutz-Checkliste für Checkout, Hosting und künftiges SaaS-Tool abarbeiten** — [Datei](backlog/US-94-abmahnschutz-checkliste-shop.md) · (noch kein Issue)
 - [x] **US-95 · Rudimentäre Besucherzählung ohne Cookie-Banner einführen** — [Datei](backlog/US-95-rudimentaere-besucherzaehlung.md) · Stufe A (GoAccess) + Stufe B (Umami) live · (noch kein Issue)
 - [x] **US-96 · Not-Aus-Schalter für Website und App bereitstellen** — [Datei](backlog/US-96-notaus-schalter.md) · live unter panel.nekofix.de · (noch kein Issue)
+- [ ] **US-97 · E-Mail-Weiterleitung von ImprovMX auf Forward Email umziehen** — [Datei](backlog/US-97-email-weiterleitung-forward-email.md) · (noch kein Issue)
 
 ## Verworfen
 - **US-16 · Datensicht je Rolle trennen** — [Datei](backlog/US-16-datensicht-je-rolle-trennen.md) · Anforderung betraf das Mieter-PDF → abgedeckt durch US-18.
