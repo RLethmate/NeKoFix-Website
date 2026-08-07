@@ -7,7 +7,7 @@ export default function Datenschutz() {
         </a>
 
         <h1 className="text-3xl font-bold mt-6 mb-2">Datenschutzerklärung</h1>
-        <p className="text-sm text-gray-500 mb-8">Stand: 06-08-2026</p>
+        <p className="text-sm text-gray-500 mb-8">Stand: 07-08-2026</p>
 
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2">1. Verantwortlicher</h2>
@@ -45,23 +45,30 @@ export default function Datenschutz() {
             Gunzenhausen, Deutschland.
           </p>
           <p className="text-sm mb-3">
-            Beim Aufruf dieser Website erhebt der Hosting-Anbieter automatisch technisch
-            notwendige Zugriffsdaten („Server-Logfiles"), die Ihr Browser automatisch übermittelt.
-            Dazu gehören in der Regel:
+            Beim Aufruf dieser Website erhebt der von uns betriebene Reverse-Proxy technisch
+            notwendige Zugriffsdaten („Server-Logfiles"). Dazu gehören:
           </p>
           <ul className="list-disc list-inside text-sm mb-3 space-y-1">
-            <li>IP-Adresse des zugreifenden Geräts</li>
             <li>Datum und Uhrzeit des Zugriffs</li>
-            <li>aufgerufene Datei/Seite, übertragene Datenmenge</li>
-            <li>Browsertyp und -version, verwendetes Betriebssystem</li>
-            <li>die zuvor besuchte Seite (Referrer-URL)</li>
+            <li>aufgerufene Datei/Seite, HTTP-Methode und Statuscode</li>
           </ul>
+          <p className="text-sm mb-3">
+            Die IP-Adresse des zugreifenden Geräts wird dabei bewusst <strong>nicht</strong>
+            protokolliert oder gespeichert (ebenso wie bei der in Ziffer 6 beschriebenen
+            Web-Analyse).
+          </p>
+          <p className="text-sm mb-3">
+            Diese Daten werden zur Sicherstellung eines störungsfreien Betriebs und zur
+            Auslastungskontrolle der Server verarbeitet (Rechtsgrundlage: Art. 6 Abs. 1 lit. f
+            DSGVO — berechtigtes Interesse). Eine Zusammenführung mit anderen Datenquellen oder ein
+            Personenbezug findet nicht statt. Der Hosting-Anbieter hat seinen Sitz in Deutschland
+            (EU), ein Drittlandtransfer findet nicht statt.
+          </p>
           <p className="text-sm">
-            Diese Daten werden zur Sicherstellung eines störungsfreien Betriebs, zur
-            Auslastungskontrolle der Server und zur Gewährleistung der IT-Sicherheit verarbeitet
-            (Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse). Eine
-            Zusammenführung mit anderen Datenquellen findet nicht statt. Der Hosting-Anbieter hat
-            seinen Sitz in Deutschland (EU), ein Drittlandtransfer findet nicht statt.
+            Zusätzlich werten wir diese Logfiles mit dem selbst gehosteten, quelloffenen Tool
+            GoAccess aggregiert aus (z. B. Seitenaufrufe, aufgerufene Seiten, Fehlerquote). Der
+            daraus erzeugte Report ist ausschließlich für uns selbst bestimmt und
+            passwortgeschützt; er enthält keine personenbezogenen Daten.
           </p>
         </section>
 
@@ -129,7 +136,8 @@ export default function Datenschutz() {
             gesetzt, keine IP-Adressen gespeichert und keine Nutzerinnen oder Nutzer
             geräteübergreifend wiedererkannt. Ausgewertet werden lediglich aggregierte,
             nicht-personenbeziehbare Kennzahlen wie Seitenaufrufe, ungefähre Herkunft (Land) und
-            verwendeter Gerätetyp/Browser.
+            verwendeter Gerätetyp/Browser. Das entspricht demselben Grundsatz wie bei den in
+            Ziffer 3 beschriebenen Server-Logfiles, die ebenfalls keine IP-Adressen enthalten.
           </p>
           <p className="text-sm mb-3">
             Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der

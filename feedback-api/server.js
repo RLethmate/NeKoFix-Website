@@ -41,6 +41,17 @@ function isRateLimited(ip) {
   return entry.count > RATE_LIMIT_MAX;
 }
 
+// Räumt abgelaufene Einträge aktiv aus dem Speicher, statt sie unbegrenzt liegen zu lassen
+// (Datenschutzerklärung Ziffer 4/5 verspricht "danach automatisch verworfen").
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of submissionsByIp) {
+    if (now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
+      submissionsByIp.delete(ip);
+    }
+  }
+}, 10 * 60 * 1000);
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const app = express();
