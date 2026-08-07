@@ -76,18 +76,41 @@ durchgängig in Deutschland/EU stattfindet. Nachteil: laufende Kosten (ca. 12–
 kostenlos, und die konkrete Auto-Weiterleitungsfunktion ist vor der Entscheidung noch direkt beim
 Anbieter zu verifizieren (in der Recherche nicht aus einer Primärquelle bestätigt).
 
-**Empfehlung:** Passt am konsequentesten zur sonstigen „alles bei uns/in der EU"-Linie des
-Projekts (Hetzner, self-hosted Umami/GoAccess) und erspart jede künftige Wiederholung dieser
-Prüfung. Letzte Entscheidung liegt bei Ralf — abhängig davon, ob die laufenden Kosten gegenüber
-der kostenlosen, aber prüfungsbedürftigen US-Optionen (A/B) akzeptiert werden.
+## Option D — Hetzner Webhosting (eigener Bestandsanbieter, nachrecherchiert 2026-08-07 auf Ralfs
+Nachfrage: `hetzner.com/webhosting`, `docs.hetzner.com/managed/webhosting/overview`)
+
+Hetzner selbst bietet „Managed Webhosting" (Tarife S/M/L/XL) mit **unbegrenzten Postfächern und
+Weiterleitungen** bereits im günstigsten Tarif „S" (10 GB Speicher, 1 Datenbank). Laut Hetzners
+eigener Aussage laufen diese Pakete „exklusiv auf Servern in unserem eigenen Rechenzentrumspark in
+Nürnberg" — explizit **nicht** in den USA (anders als bei manchen Hetzner-Cloud-Produkten, die
+auch US-Standorte haben; das Webhosting-Produkt ist laut Primärquelle Nürnberg-exklusiv).
+
+- **Kein neuer Anbieter, keine neue Vertrags-/Datenschutzprüfung nötig** — Hetzner ist als
+  Hosting-Anbieter bereits in Ziffer 3 der Datenschutzerklärung benannt und die Domain
+  `nekofix.de` ist ohnehin schon bei Hetzner registriert.
+- Genaue aktuelle Monatspreise ließen sich aus der Live-Seite nicht zuverlässig auslesen (Preise
+  werden dynamisch/per Skript geladen); ein Aggregator nannte ca. 1,90 EUR/Monat als Einstieg —
+  vor Buchung auf `hetzner.com/webhosting` selbst gegenprüfen.
+- **Offener Punkt:** ob ein Webhosting-Paket rein für E-Mail (MX-Records) genutzt werden kann,
+  während die eigentliche Website weiterhin über den bestehenden Hetzner-Cloud-Server (Coolify)
+  läuft, war in der Dokumentation nicht ausdrücklich bestätigt. Technisch ist das branchenüblicher
+  Standard (nur MX-Records auf Hetzners Mailserver zeigen, A/AAAA-Records bleiben unverändert auf
+  dem Cloud-Server) — trotzdem vor Buchung kurz beim Hetzner-Support absichern.
+
+**Aktualisierte Empfehlung:** Option D ist vermutlich die stimmigste Wahl — kein neuer Anbieter,
+schon vorhandene Vertragsbeziehung, günstig, Nürnberg-exklusiv und damit ohne jede
+Drittlandtransfer-Frage. Löst das Thema mit dem geringsten zusätzlichen Prüfungsaufwand von allen
+vier Optionen. Letzte Entscheidung liegt bei Ralf.
 
 ## Akzeptanzkriterien
 
 - [ ] Entscheidung getroffen zwischen Option A (Forward Email gehostet), B (Forward Email selbst
-      gehostet) oder C (echter EU-Anbieter, z. B. mailbox.org/Posteo).
+      gehostet), C (echter EU-Anbieter, z. B. mailbox.org/Posteo) oder D (Hetzner Webhosting).
 - [ ] Bei A: DPA-Geltung für den tatsächlichen Sign-up-Flow verifiziert (nicht nur aus
       Sekundärquellen übernommen).
 - [ ] Bei C: Auto-Weiterleitungsfunktion beim gewählten Anbieter konkret bestätigt.
+- [ ] Bei D: aktueller Preis auf `hetzner.com/webhosting` gegengeprüft; beim Support abgesichert,
+      dass ein Paket rein für MX/E-Mail nutzbar ist, ohne die bestehende Website-DNS anzufassen.
 - [ ] DNS (MX-Records) für `nekofix.de` umgestellt; Weiterleitung Ende-zu-Ende getestet
       (Testmail an `info@nekofix.de` kommt in der tatsächlichen Zielmailbox an).
 - [ ] ImprovMX-Konto und die zugehörigen DNS-Einträge nach erfolgreicher Umstellung entfernt.
