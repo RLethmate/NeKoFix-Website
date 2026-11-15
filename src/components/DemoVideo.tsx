@@ -107,12 +107,12 @@ export default function DemoVideo() {
             <div className="text-center">
               <div className="w-8 h-8 rounded-full bg-brand-primary/10 text-brand-primary font-bold text-sm flex items-center justify-center mx-auto mb-3">1</div>
               <div className="font-bold text-brand-secondary mb-1 text-sm">Abrechnung prüfen</div>
-              <div className="text-xs text-brand-ink/60 leading-relaxed">Im App-Schritt 6 siehst du die fertige, formell korrekte Abrechnung je Mieter.</div>
+              <div className="text-xs text-brand-ink/60 leading-relaxed">Im App-Schritt 6 siehst du die fertige Abrechnung je Mieter mit nachvollziehbarem Rechenweg.</div>
             </div>
             <div className="text-center">
               <div className="w-8 h-8 rounded-full bg-brand-primary/10 text-brand-primary font-bold text-sm flex items-center justify-center mx-auto mb-3">2</div>
               <div className="font-bold text-brand-secondary mb-1 text-sm">PDF exportieren & versenden</div>
-              <div className="text-xs text-brand-ink/60 leading-relaxed">Ein Klick erzeugt das formell korrekte PDF mit GiroCode – fertig zum Versenden.</div>
+              <div className="text-xs text-brand-ink/60 leading-relaxed">Ein Klick erzeugt das PDF mit GiroCode – fertig zum Versenden.</div>
             </div>
             <div className="text-center">
               <div className="w-8 h-8 rounded-full bg-brand-primary font-bold text-sm flex items-center justify-center mx-auto mb-3 text-white shadow-md">3</div>
