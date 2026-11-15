@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { Check, Send, ShieldCheck, KeyRound } from "lucide-react";
 
 const FEEDBACK_API_URL = import.meta.env.VITE_FEEDBACK_API_URL || "https://api.nekofix.de/feedback";
@@ -71,24 +71,6 @@ export default function Pricing() {
       setSignupError(err instanceof Error ? err.message : "Anfrage konnte nicht gesendet werden. Bitte später erneut versuchen.");
     }
   };
-
-  // Verfügbare Test-Plätze: fester Wert, damit die Zahl nicht bei jedem Laden schwankt
-  const slotsLeft = 14;
-  const [daysLeft, setDaysLeft] = useState(0);
-
-  useEffect(() => {
-    // Erprobungsphase läuft bis Ende September 2026 – Anzeige in ganzen Tagen
-    const erprobungsEnde = new Date(2026, 8, 30, 23, 59, 59);
-    const updateCountdown = () => {
-      const now = new Date();
-      const diff = erprobungsEnde.getTime() - now.getTime();
-      setDaysLeft(Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24))));
-    };
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000 * 60 * 60);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -177,28 +159,16 @@ export default function Pricing() {
                   </div>
                   <div className="flex items-center gap-3 text-sm">
                     <Check className="w-5 h-5 text-brand-primary shrink-0" strokeWidth={2.5} />
-                    <span className="font-semibold text-brand-secondary">Lokale DSGVO-Sicherheit</span>
+                    <span className="font-semibold text-brand-secondary">Daten bleiben lokal bei dir</span>
                   </div>
                   <div className="text-xs text-brand-ink/50 pl-8">
                     Gilt für ein Objekt (Gebäude) mit beliebig vielen Einheiten.
                   </div>
                 </div>
 
-                {/* Urgency Widget */}
-                <div className="bg-brand-primary/5 rounded-2xl p-4 border border-brand-primary/10">
-                  <div className="flex justify-between items-center text-xs font-bold text-brand-secondary mb-2">
-                    <span>Verfügbare Test-Plätze:</span>
-                    <span className="text-brand-warning">{slotsLeft} / 100 übrig</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden mb-3">
-                    <div className="bg-brand-primary h-full transition-all duration-1000" style={{ width: `${slotsLeft}%` }}></div>
-                  </div>
-                  <div className="text-center text-[11px] text-brand-ink/60">
-                    Erprobungsphase läuft noch bis Ende September:<br />
-                    <span className="font-mono font-bold text-brand-secondary text-xs">
-                      noch {daysLeft} {daysLeft === 1 ? "Tag" : "Tage"}
-                    </span>
-                  </div>
+                {/* Beta-Hinweis (ersetzt den früheren Countdown und den festen Platz-Zähler) */}
+                <div className="bg-brand-primary/5 rounded-2xl p-4 border border-brand-primary/10 text-center text-[11px] text-brand-ink/70 leading-relaxed">
+                  Die Erprobungsphase läuft. Ihr Ende kündigen wir rechtzeitig vorher an.
                 </div>
 
                 <div className="text-xs text-brand-ink/50 text-center leading-relaxed">
@@ -317,10 +287,10 @@ export default function Pricing() {
 
               <div className="text-sm text-brand-ink/80 leading-relaxed space-y-2">
                 <p>
-                  Für die aktuelle Erprobungsphase sicherst du dir den Freischalt-Code kostenlos über das Beta-Ticket links – trag dort einfach Name und E-Mail-Adresse ein. Nach der Erprobungsphase (Ende September) erwirbst du für die nächste Abrechnung einen einmaligen Lizenzschlüssel nach dem gleichen Prinzip.
+                  Für die aktuelle Erprobungsphase sicherst du dir den Freischalt-Code kostenlos über das Beta-Ticket links – trag dort einfach Name und E-Mail-Adresse ein. Nach der Erprobungsphase erwirbst du für die nächste Abrechnung einen einmaligen Lizenzschlüssel nach dem gleichen Prinzip.
                 </p>
                 <p className="text-xs">
-                  💡 <b>Lokaler Datenschutz garantiert:</b> Der Code wird im Offline-Kaufprozess aus deinem <b>Objektname + Abrechnungsjahr</b> generiert. Die eigentliche Abrechnungs-Software prüft den Schlüssel komplett lokal bei dir im Browser. Es werden zu keinem Zeitpunkt Mieter- oder Finanzdaten über das Internet übertragen.
+                  <b>Lokaler Datenschutz:</b> Der Code wird im Offline-Kaufprozess aus deinem <b>Objektname + Abrechnungsjahr</b> generiert. Die eigentliche Abrechnungs-Software prüft den Schlüssel komplett lokal bei dir im Browser. Es werden zu keinem Zeitpunkt Mieter- oder Finanzdaten über das Internet übertragen.
                 </p>
               </div>
 

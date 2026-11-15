@@ -34,8 +34,12 @@ Record vs. Stripe), die Seite sollte sich also noch nicht auf einen Anbieter fes
 - [ ] Ein Auftragsverarbeitungsvertrag (AVV, Art. 28 DSGVO) mit Hetzner als Hosting-Anbieter ist
       abgeschlossen bzw. akzeptiert (Hetzner stellt i. d. R. einen Standard-AVV im Kundenkonto
       bereit — prüfen und bestätigen, in der Datenschutzerklärung referenzieren).
-- [ ] Zwei-Faktor-Authentifizierung ist für das Hetzner-Konto und den Coolify-Admin-Zugang
-      aktiviert.
+- [x] Zwei-Faktor-Authentifizierung ist für das Hetzner-Konto und den Coolify-Admin-Zugang
+      aktiviert. Stand 2026-11-15: Hetzner-Konto 2FA aktiv, Coolify-2FA eingerichtet (beides
+      laut Ralf).
+      Zusätzlich: Hetzner-Cloud-Firewall `nekofix-firewall` auf `nekofix-prod` angewendet —
+      eingehend nur TCP 22/80/443 und ICMP; Coolify nur noch über `https://coolify.nekofix.de`
+      (Port 8000 gesperrt, per Außen-Test verifiziert).
 - [ ] Herkunft der verwendeten Bilder, Icons und Videos ist bestätigt (eigene Aufnahmen/Screen-
       recordings vs. Drittquellen mit Lizenz) — bislang nicht verifiziert, da nicht aus dem Code
       ersichtlich.

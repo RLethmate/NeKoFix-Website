@@ -1,5 +1,4 @@
 import { ArrowRight, Play, Database, Shield, Zap, Scale } from "lucide-react";
-import { useState } from "react";
 import NekoFixWordmark from "./NekoFixWordmark";
 
 export default function Hero() {
@@ -11,10 +10,10 @@ export default function Hero() {
     },
     {
       h1: "Vom Kontoauszug zur fertigen Abrechnung – an einem Nachmittag.",
-      sub: "Keine Formelfehler in Excel, kein Stress mit Techem oder Ista. Verwalte deine Mieteinheiten, passe Mieten automatisch an und erstelle Abrechnungen lokal im Browser."
+      sub: "Keine Formelfehler in Excel, kein Warten auf externe Abrechnungsdienste. Verwalte deine Mieteinheiten, passe Mieten automatisch an und erstelle Abrechnungen lokal im Browser."
     },
     {
-      h1: "Nach aktuellem Rechtsstand abrechnen und verwalten.",
+      h1: "Abrechnen und verwalten – mit den aktuellen Regeln eingebaut.",
       sub: "CO2-Aufteilung, Indexmieten und Heizungswechsel uvm. einfach gelöst. Deine sensiblen Mieterdaten verlassen niemals deinen PC – datenschutzfreundlich lokal gespeichert."
     },
     {
@@ -23,12 +22,13 @@ export default function Hero() {
     },
     {
       h1: "Mieterdaten gehören Mietern – nicht der Cloud.",
-      sub: "Volle Datenhoheit, kein Kompromiss: Sensible Mieter- und Finanzdaten verlassen niemals deinen Computer. NeKoFix verarbeitet alles lokal in deinem Browser – ganz ohne fremde Server."
+      sub: "Volle Datenhoheit, kein Kompromiss: Sensible Mieter- und Finanzdaten verlassen niemals deinen Computer. NeKoFix verarbeitet alles lokal in deinem Browser – deine Mieterdaten werden an keinen Server übertragen."
     }
   ];
 
-  // Default to first claim, can be easily toggled or integrated with an A/B test parameter
-  const [activeClaimIdx, setActiveClaimIdx] = useState(0);
+  // Aktiver Claim. Der frühere öffentliche Umschalter „Claims testen" wurde entfernt
+  // (interne Testfunktion war live sichtbar); für A/B-Tests den Index hier ändern.
+  const activeClaimIdx = 0;
 
   return (
     <section className="relative bg-brand-surface pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden border-b border-brand-cream">
@@ -40,7 +40,7 @@ export default function Hero() {
           {/* Beta Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6 animate-pulse">
             <span className="w-2 h-2 rounded-full bg-brand-primary"></span>
-            Gratis Beta-Phase: Voller Funktionsumfang bis Ende September kostenlos
+            Gratis Beta-Phase: Voller Funktionsumfang kostenlos
           </div>
 
           {/* Headline - Modular for A/B Testing */}
@@ -81,24 +81,6 @@ export default function Hero() {
             Ohne Wasserzeichen nutzen? Jetzt kostenloses Beta-Ticket sichern →
           </a>
 
-          {/* A/B Test Swapper (Simulated / For client review) */}
-          <div className="flex items-center gap-2 mb-10 px-3 py-1.5 bg-brand-cream/50 rounded-lg border border-brand-cream text-xs text-brand-ink/60">
-            <span>Claims testen:</span>
-            {claims.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveClaimIdx(idx)}
-                className={`w-6 h-6 rounded flex items-center justify-center font-bold transition-all ${
-                  activeClaimIdx === idx 
-                    ? 'bg-brand-primary text-white shadow-sm' 
-                    : 'bg-white hover:bg-gray-100 border border-gray-200'
-                }`}
-              >
-                {idx + 1}
-              </button>
-            ))}
-          </div>
-
           {/* Trust Highlights */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-3xl border-t border-brand-cream pt-8">
             <div className="flex items-center gap-3 justify-center sm:justify-start">
@@ -124,7 +106,7 @@ export default function Hero() {
                 <Scale className="w-5 h-5" />
               </div>
               <div className="text-left">
-                <h3 className="font-semibold text-sm text-brand-ink">Rechtlich aktuell</h3>
+                <h3 className="font-semibold text-sm text-brand-ink">Gesetzliche Vorgaben eingebaut</h3>
                 <p className="text-xs text-brand-ink/60">Inklusive CO2-Aufteilung & § 35a</p>
               </div>
             </div>

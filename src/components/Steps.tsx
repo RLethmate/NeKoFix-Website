@@ -28,7 +28,7 @@ export default function Steps() {
       number: "4",
       title: "PDF-Export & Tracking",
       description:
-        "Erzeuge auf Knopfdruck formell korrekte PDFs je Mieter mit GiroCode (QR) zum Scannen. Zahlungseingänge hakst du danach einfach ab.",
+        "Erzeuge auf Knopfdruck PDFs je Mieter mit nachvollziehbarem Rechenweg und mit GiroCode (QR) zum Scannen. Zahlungseingänge hakst du danach einfach ab.",
     },
   ];
 

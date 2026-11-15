@@ -5,17 +5,17 @@ export default function Comparison() {
   const comparisons = [
     {
       title: "Excel-Tabellen",
-      subtitle: "Die Selbermacher-Hölle",
+      subtitle: "Alles selbst bauen",
       icon: AlertTriangle,
       iconColor: "text-amber-500 bg-amber-50",
       points: [
-        "Hohes Risiko für teure Formelfehler",
-        "Neues CO2-Gesetz (CO2KostAufG) nicht berechenbar",
-        "Stundenlanges Word-Formatieren für jeden Mieter",
-        "Keine Plausibilitätsprüfung vor dem Absenden",
-        "Völlig ungeeignet für unterjährige Wechsel"
+        "Formeln selbst aufbauen und pflegen – Fehler fallen oft erst spät auf",
+        "CO2-Aufteilung und Heizkostenregeln musst du selbst abbilden",
+        "Mieter-Schreiben jedes Jahr von Hand formatieren",
+        "Keine eingebaute Plausibilitätsprüfung",
+        "Unterjährige Mieterwechsel erfordern Zusatzrechnungen"
       ],
-      badge: "Risikoreich",
+      badge: "Viel Handarbeit",
       badgeColor: "bg-amber-100 text-amber-800",
       highlight: false
     },
@@ -26,7 +26,7 @@ export default function Comparison() {
       iconColor: "text-brand-primary bg-brand-primary/10",
       points: [
         "Automatische CO2-Splittung & Heizperioden-Wechsel",
-        "Zahlungstracking & automatische Mietanpassungen",
+        "Zahlungstracking & Index-/Staffelmiete berechnen",
         "GiroCode (QR) auf Abrechnung – scannen, fertig",
         "Integrierter Plausibilitäts-Check vor dem Druck",
         "100% lokal: Mieterdaten verlassen nie deinen PC",
@@ -37,19 +37,18 @@ export default function Comparison() {
       highlight: true
     },
     {
-      title: "Abrechnungs-Riesen",
-      subtitle: "Die Techem-/Ista-Gebührenfalle",
+      title: "Messdienst-Komplettservice",
+      subtitle: "Abrechnung durch einen externen Dienstleister",
       icon: ShieldAlert,
-      iconColor: "text-red-500 bg-red-50",
+      iconColor: "text-gray-500 bg-gray-100",
       points: [
-        "Hohe Gebühren, die sich bei 1–5 Einheiten nicht lohnen",
-        "Monatelange Wartezeiten auf die fertige Abrechnung",
-        "Mieter beschweren sich über späte Zustellung",
-        "Komplizierte, unpersönliche Hotline-Schnittstellen",
-        "Knebelverträge mit teurer Geräte-Miete"
+        "Abrechnungsgebühr je Wohnung und Jahr, oft zusätzlich Gerätemiete",
+        "Zeitpunkt der Abrechnung hängt vom Dienstleister ab",
+        "Vertragslaufzeiten häufig an die Messgeräte gekoppelt",
+        "Rundum-Service inklusive Ablesung und Gerätewartung"
       ],
-      badge: "Überteuert",
-      badgeColor: "bg-red-100 text-red-800",
+      badge: "Eher für größere Bestände",
+      badgeColor: "bg-gray-100 text-gray-700",
       highlight: false
     }
   ];
@@ -59,10 +58,10 @@ export default function Comparison() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl font-extrabold text-brand-secondary tracking-tight mb-6">
-            Zwischen Excel-Frust und Stress mit den großen Abrechnungskonzernen. <br/> Oder gibt es einen smarten Mittelweg?
+            Zwischen Excel-Eigenbau und externem Abrechnungsdienst. <br/> Gibt es einen Mittelweg?
           </h2>
           <p className="text-lg text-brand-ink/70 leading-relaxed">
-            Fehler in der Nebenkostenabrechnung können teuer werden und belasten das Mieterverhältnis. Für 1 bis 5 Wohnungen lohnen sich jedoch weder teure Monats-Abos noch die Abrechnungs-Riesen mit monatelangen Wartezeiten. <br/> Außerdem muss man alle Daten eh selbst pflegen.
+            Fehler in der Nebenkostenabrechnung können teuer werden und belasten das Mietverhältnis. Bei 1 bis 5 Wohnungen passen Monats-Abos und Komplettservices nicht immer zum Aufwand. <br/> Die Daten pflegst du ohnehin selbst – dann kannst du auch selbst abrechnen.
           </p>
         </div>
 
